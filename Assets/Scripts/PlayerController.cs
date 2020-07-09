@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     {
         float speed = Input.GetAxisRaw("Horizontal");
         Vector3 scal = transform.localScale;
+       // boxCollider = gameObject.GetComponent<Collider2D>();
         if (speed == 1)
         {
             scal.x = 2;
@@ -28,7 +29,25 @@ public class PlayerController : MonoBehaviour
         {
               animator.SetBool("speed greater", false);
            }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            animator.SetBool("crouch", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            animator.SetBool("crouch", false);
+        }
+      float jum = Input.GetAxisRaw("Vertical");
+        if (jum >0)
+        {
+            animator.SetBool("jump", true);
+        }
+
+        else
+        {
+            animator.SetBool("jump", false);
+        }
         
     }
-    
+             
 }
