@@ -7,25 +7,31 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public float speed;
+    public float jump;
    private void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Jump");
         
-        playerHorizontal(horizontal);
-        playerAnimation(horizontal);
+        playerMovement(horizontal,vertical);
+        playerAnimation(horizontal,vertical);
 
        
         
 
     }
-    void playerHorizontal(float horizontal)
+    void playerMovement(float horizontal,float vertical)
     {
         Vector3 position = transform.position;
         position.x = position.x + horizontal * speed * Time.deltaTime;
         Debug.Log("x");
         transform.position=  position;
+        if (vertical >0)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jump),ForceMode2D.Force);
+        }
     }
-    void playerAnimation(float horizontal)
+    void playerAnimation(float horizontal,float vertical)
     {
         Vector3 scal = transform.localScale;
         if (horizontal == 1)
@@ -56,12 +62,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("crouch", false);
         }
-        float jum = Input.GetAxisRaw("Vertical");
-        if (jum > 0)
+        if(vertical >0)
         {
             animator.SetBool("jump", true);
         }
-
         else
         {
             animator.SetBool("jump", false);
