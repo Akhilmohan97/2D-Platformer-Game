@@ -54,9 +54,12 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("speed greater", false);
         }
+        
         if (Input.GetKey(KeyCode.LeftControl))
         {
             animator.SetBool("crouch", true);
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(.05f, 0.65f);
+            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 1.37f);
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
