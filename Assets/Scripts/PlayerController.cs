@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public float speed;
     public float jump;
+    public string SameScene;
    private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
         
         playerMovement(horizontal,vertical);
         playerAnimation(horizontal,vertical);
+        LevelEndScript();
 
        
         
@@ -26,10 +29,9 @@ public class PlayerController : MonoBehaviour
         position.x = position.x + horizontal * speed * Time.deltaTime;
         Debug.Log("x");
         transform.position=  position;
-        if (vertical >0)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jump),ForceMode2D.Force);
-        }
+       
+
+
     }
     void playerAnimation(float horizontal,float vertical)
     {
@@ -64,14 +66,36 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             animator.SetBool("crouch", false);
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(.02f, 0.97f);
+            gameObject.GetComponent<BoxCollider2D>().size = new Vector2(0.6f, 2.02f);
         }
-        if(vertical >0)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("jump", true);
         }
         else
         {
             animator.SetBool("jump", false);
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("stayfunction");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jump), ForceMode2D.Impulse);
+               
+
+            }
+        }
+    }
+    void LevelEndScript ()
+    {
+        if (gameObject.transform.position.y < -12.8f)
+        {
+            SceneManager.LoadScene(SameScene);
         }
     }
 
