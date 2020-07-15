@@ -10,6 +10,13 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump;
     public string SameScene;
+    public ScoreController scoreController;
+    
+
+    
+
+    
+
    private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -27,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 position = transform.position;
         position.x = position.x + horizontal * speed * Time.deltaTime;
-        Debug.Log("x");
+      
         transform.position=  position;
        
 
@@ -41,7 +48,7 @@ public class PlayerController : MonoBehaviour
             scal.x = 2;
             animator.SetBool("speed greater", true);
             transform.localScale = scal;
-            Debug.Log("y");
+            
 
         }
         else if (horizontal < 0)
@@ -80,8 +87,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        Debug.Log("stayfunction1");
+
+        if (collision.gameObject.tag == "Ground")
         {
+
             Debug.Log("stayfunction");
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -91,6 +101,18 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("exit");
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("enter");
+    }
     void LevelEndScript ()
     {
         if (gameObject.transform.position.y < -12.8f)
@@ -98,6 +120,16 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SameScene);
         }
     }
+    public void pickup()
+    {
+        Debug.Log("pickup player controller");
+        scoreController.IncreaseScore(10);
+
+        
+
+
+    }
+    
 
 }
       
