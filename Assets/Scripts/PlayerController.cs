@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.transform.position.y < -12.8f)
         {
-            SceneManager.LoadScene(SameScene);
+            ReloadScene();
         }
     }
     public void pickup()
@@ -129,8 +129,16 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    public void Enemy()
+    {
+        Debug.Log("enemy");
+        ReloadScene(); 
+    }
     
-
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SameScene);
+    }
 }
       
 
