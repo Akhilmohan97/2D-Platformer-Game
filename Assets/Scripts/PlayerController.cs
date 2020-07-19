@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("jump", false);
         }
+        
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -129,13 +130,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    public void Enemy()
-    {
-        Debug.Log("enemy");
-        ReloadScene(); 
-    }
+   // public void Enemy()
     
-    void ReloadScene()
+       
+   //     ReloadScene(); 
+  //  }
+    
+   public void ReloadScene()
     {
         SceneManager.LoadScene(SameScene);
     }

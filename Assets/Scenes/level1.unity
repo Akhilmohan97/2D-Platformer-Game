@@ -1959,6 +1959,12 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+--- !u!95 &1422930794 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7595159401555700556, guid: 4c107ebe67b31724abaf2363d40437df,
+    type: 3}
+  m_PrefabInstance: {fileID: 7595159401957735468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1615651097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2105,12 +2111,12 @@ PrefabInstance:
     - target: {fileID: 496208199769773640, guid: 177b9fa7cea5aea42acd600f1544a35c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.71
+      value: 5.84
       objectReference: {fileID: 0}
     - target: {fileID: 496208199769773640, guid: 177b9fa7cea5aea42acd600f1544a35c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.88
+      value: -1.97
       objectReference: {fileID: 0}
     - target: {fileID: 496208199769773640, guid: 177b9fa7cea5aea42acd600f1544a35c,
         type: 3}
@@ -2167,6 +2173,11 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 809720037}
+    - target: {fileID: 496208199769773646, guid: 177b9fa7cea5aea42acd600f1544a35c,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1422930794}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 177b9fa7cea5aea42acd600f1544a35c, type: 3}
 --- !u!1001 &4129030355078249345
