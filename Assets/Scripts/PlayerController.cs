@@ -130,11 +130,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
-   // public void Enemy()
     
-       
-   //     ReloadScene(); 
-  //  }
     
    public void ReloadScene()
     {
