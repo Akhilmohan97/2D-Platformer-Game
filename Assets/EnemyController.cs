@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public float speedenemy;
     public Transform detector;
     bool moveright = true;
+    public Gameover gameover;
 
     private void Update()  
     {
@@ -46,7 +47,7 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("delay");
         yield return new WaitForSeconds(3f);
-        playerController.ReloadScene();
+        gameover.ReloadScene();
     }
 
 

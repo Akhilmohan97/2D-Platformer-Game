@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public float speed;
     public float jump;
-    public string SameScene;
+    public string SameLevel;
     public ScoreController scoreController;
+    public Gameover gameover;
+
+
     
 
     
@@ -21,15 +26,17 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
-        
+       
         playerMovement(horizontal,vertical);
         playerAnimation(horizontal,vertical);
         LevelEndScript();
 
-       
+
         
 
     }
+
+   
     void playerMovement(float horizontal,float vertical)
     {
         Vector3 position = transform.position;
@@ -102,23 +109,13 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        
-        if (collision.gameObject.tag == "Ground")
-        {
-            Debug.Log("exit");
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("enter");
-    }
+
+   
     void LevelEndScript ()
     {
         if (gameObject.transform.position.y < -12.8f)
         {
-            ReloadScene();
+           gameover.ReloadScene();
         }
     }
     public void pickup()
@@ -132,10 +129,8 @@ public class PlayerController : MonoBehaviour
     }
     
     
-   public void ReloadScene()
-    {
-        SceneManager.LoadScene(SameScene);
-    }
+   
+   
 }
       
 
