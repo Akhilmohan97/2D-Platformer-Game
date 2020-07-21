@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class Gameover : MonoBehaviour
 {
-    public string SameLevel;
-    public Button restart;
+    
+    public Button restart, Lobby;
    public PlayerController PlayerController;
     void Start ()
     {
         restart.onClick.AddListener(SameSceneReload);
+        Lobby.onClick.AddListener(lobby);
     }
 
     public void ReloadScene()
@@ -22,7 +23,12 @@ public class Gameover : MonoBehaviour
     }
     public void SameSceneReload()
     {
-        Debug.Log("button");
-        SceneManager.LoadScene(SameLevel);
+        Scene samescene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(samescene.buildIndex);
+        
+    }
+    private void lobby ()
+    {
+        SceneManager.LoadScene(0);
     }
 }

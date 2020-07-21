@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 public class Lobby : MonoBehaviour
 {
     public Button button;
+    public GameObject levelselector;
     private void Start()
     {
         button.onClick.AddListener(StartScene);
     }
     void StartScene()
     {
-        SceneManager.LoadScene(1);
+        levelselector.SetActive(true);
     }
 }
