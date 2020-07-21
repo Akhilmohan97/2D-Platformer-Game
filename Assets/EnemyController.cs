@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-  public   PlayerController playerController;
-    public Animator animator;
+  
+   
     public float speedenemy;
     public Transform detector;
     bool moveright = true;
-    public Gameover gameover;
+    
+    
 
     private void Update()  
     {
@@ -35,21 +36,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.GetComponent<PlayerController>() != null)
-            {
-            animator.SetBool("Death", true);
-            StartCoroutine(MyCoroutine());
-              }
-    }
-    IEnumerator MyCoroutine()
-    {
-        Debug.Log("delay");
-        yield return new WaitForSeconds(3f);
-        gameover.ReloadScene();
-    }
-
-
+   
+   
 
 }

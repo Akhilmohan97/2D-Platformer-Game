@@ -8,6 +8,7 @@ public class Gameover : MonoBehaviour
 {
     public string SameLevel;
     public Button restart;
+   public PlayerController PlayerController;
     void Start ()
     {
         restart.onClick.AddListener(SameSceneReload);
@@ -16,6 +17,8 @@ public class Gameover : MonoBehaviour
     public void ReloadScene()
     {
         gameObject.SetActive(true);
+        PlayerController.enabled = false;
+        
     }
     public void SameSceneReload()
     {
