@@ -824,6 +824,11 @@ PrefabInstance:
       propertyPath: Lobby
       value: 
       objectReference: {fileID: 339610281}
+    - target: {fileID: 3133972480762250084, guid: 550dcf500066f1a499b18a77657e047c,
+        type: 3}
+      propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 478168209}
     - target: {fileID: 3133972480762250085, guid: 550dcf500066f1a499b18a77657e047c,
         type: 3}
       propertyPath: m_LocalPosition.x

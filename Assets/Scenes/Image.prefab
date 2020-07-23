@@ -465,8 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e45910b70dbb7a4ba411ec76528b5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SameLevel: level1
   restart: {fileID: 3133972480477603310}
+  Lobby: {fileID: 5239171961955776418}
   PlayerController: {fileID: 0}
 --- !u!1 &5395602171345041225
 GameObject:
